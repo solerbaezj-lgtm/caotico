@@ -1,0 +1,631 @@
+:root {
+  --ink: #080707;
+  --coal: #151111;
+  --paper: #f4f0eb;
+  --wine: #761d22;
+  --wine-bright: #a42b31;
+  --line: rgba(244, 240, 235, 0.16);
+
+  --content-width: 1500px;
+  --page-padding: clamp(1rem, 4vw, 2.5rem);
+  --section-padding: clamp(4rem, 9vw, 7.5rem);
+}
+
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--ink);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Work Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================
+   TEXTURA
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.09;
+
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.75) 0.55px,
+    transparent 0.6px
+  );
+
+  background-size: 5px 5px;
+  mix-blend-mode: soft-light;
+}
+
+/* =========================
+   TIPOGRAFÍA
+========================= */
+
+.display {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.nav-shell {
+  background: rgba(8, 7, 7, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-shell nav {
+  width: 100%;
+}
+
+.nav-link {
+  font-size: 0.71rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--wine-bright);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.9rem;
+  height: 2.9rem;
+  min-width: 2.9rem;
+
+  padding: 0;
+  border: 1px solid transparent;
+
+  color: var(--paper);
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  border-color: var(--paper);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* =========================
+   ACCESIBILIDAD
+========================= */
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--wine-bright);
+  outline-offset: 4px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-height {
+  min-height: max(
+    620px,
+    calc(var(--vh, 1vh) * 100)
+  );
+}
+
+.hero-image {
+  filter:
+    grayscale(100%)
+    contrast(1.22)
+    brightness(0.47);
+
+  transition:
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hero:hover .hero-image {
+  transform: scale(1.04);
+}
+
+.hero-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 7, 7, 0.96) 0%,
+      rgba(8, 7, 7, 0.7) 46%,
+      rgba(8, 7, 7, 0.18) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(8, 7, 7, 0.7) 0%,
+      transparent 55%
+    );
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-frame {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  width: clamp(6rem, 12vw, 8.75rem);
+  height: 3rem;
+
+  overflow: hidden;
+}
+
+.brand-logo {
+  width: clamp(6rem, 12vw, 8.75rem);
+  height: 5.5rem;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center;
+
+  mix-blend-mode: screen;
+
+  filter:
+    contrast(1.35)
+    saturate(1.2);
+}
+
+/* =========================
+   LÍNEA ROJA
+========================= */
+
+.red-rule {
+  width: clamp(2.75rem, 8vw, 3.75rem);
+  height: 0.3rem;
+  background: var(--wine-bright);
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.65rem;
+
+  min-height: 3.25rem;
+
+  padding:
+    0.82rem
+    clamp(1rem, 3vw, 1.35rem);
+
+  border: 1px solid var(--paper);
+
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  transform: translateY(-3px);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.cta-wine {
+  border-color: var(--wine);
+  background: var(--wine);
+  color: #fff;
+}
+
+.cta-wine:hover,
+.cta-wine:focus-visible {
+  border-color: var(--wine-bright);
+  background: var(--wine-bright);
+  color: #fff;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section-pad {
+  padding:
+    var(--section-padding)
+    var(--page-padding);
+}
+
+.section-title {
+  font-size: clamp(
+    3.5rem,
+    9vw,
+    8.5rem
+  );
+
+  font-weight: 900;
+  line-height: 0.77;
+
+  overflow-wrap: break-word;
+}
+
+.manifesto-mark {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(244, 240, 235, 0.62);
+}
+
+/* =========================
+   TERRITORIOS
+========================= */
+
+.territory {
+  position: relative;
+
+  min-height: clamp(
+    15rem,
+    32vw,
+    20rem
+  );
+
+  padding: clamp(
+    1.25rem,
+    3vw,
+    1.8rem
+  );
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  background: #141111;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.territory:hover {
+  transform: translateY(-5px);
+
+  border-color: var(--wine-bright);
+
+  background: #1e1213;
+}
+
+.territory-number {
+  margin: 0;
+
+  color: rgba(244, 240, 235, 0.18);
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(
+    5rem,
+    12vw,
+    9rem
+  );
+
+  font-weight: 900;
+
+  letter-spacing: -0.08em;
+
+  line-height: 0.7;
+
+  user-select: none;
+}
+
+/* =========================
+   MENÚ MÓVIL
+========================= */
+
+.mobile-panel {
+  max-height: 0;
+
+  overflow: hidden;
+
+  background: rgba(8, 7, 7, 0.98);
+
+  transition:
+    max-height 0.35s ease;
+}
+
+.mobile-panel.open {
+  max-height: 20rem;
+}
+
+.mobile-panel a {
+  min-height: 2.75rem;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.canva-footer {
+  background: var(--ink);
+}
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 1023px) {
+  .hero-height {
+    min-height: max(
+      600px,
+      calc(var(--vh, 1vh) * 92)
+    );
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 7, 7, 0.94),
+        rgba(8, 7, 7, 0.5)
+      ),
+      linear-gradient(
+        0deg,
+        rgba(8, 7, 7, 0.8),
+        transparent
+      );
+  }
+}
+
+/* =========================
+   MÓVILES
+========================= */
+
+@media (max-width: 767px) {
+  .nav-shell nav {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .logo-frame {
+    width: 5.8rem;
+    height: 2.5rem;
+  }
+
+  .brand-logo {
+    width: 5.8rem;
+    height: 3.8rem;
+  }
+
+  .icon-btn {
+    width: 2.65rem;
+    height: 2.65rem;
+    min-width: 2.65rem;
+  }
+
+  .hero-height {
+    min-height: max(
+      580px,
+      calc(var(--vh, 1vh) * 88)
+    );
+  }
+
+  .hero-image {
+    object-position: 60% center;
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8, 7, 7, 0.62) 0%,
+        rgba(8, 7, 7, 0.32) 30%,
+        rgba(8, 7, 7, 0.97) 100%
+      );
+  }
+
+  .section-title {
+    font-size: clamp(
+      3.25rem,
+      17vw,
+      6rem
+    );
+  }
+
+  .manifesto-mark {
+    -webkit-text-stroke: 0.8px rgba(244, 240, 235, 0.62);
+  }
+
+  .territory {
+    min-height: 15rem;
+  }
+
+  .territory h3 {
+    font-size: clamp(
+      2.5rem,
+      14vw,
+      4rem
+    );
+  }
+
+  .territory-number {
+    font-size: clamp(
+      5rem,
+      25vw,
+      7rem
+    );
+  }
+
+  .cta {
+    width: 100%;
+    min-height: 3.5rem;
+  }
+
+  .hero .cta {
+    width: min(100%, 20rem);
+  }
+
+  .reveal {
+    transform: translateY(18px);
+  }
+}
+
+/* =========================
+   MÓVILES MUY PEQUEÑOS
+========================= */
+
+@media (max-width: 380px) {
+  .nav-shell nav {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .logo-frame {
+    width: 4.8rem;
+  }
+
+  .brand-logo {
+    width: 4.8rem;
+  }
+
+  .hero-height {
+    min-height: 560px;
+  }
+
+  .section-title {
+    font-size: 3rem;
+  }
+
+  .territory {
+    min-height: 14rem;
+  }
+
+  .territory h3 {
+    font-size: 2.35rem;
+  }
+}
+
+/* =========================
+   PANTALLAS GRANDES
+========================= */
+
+@media (min-width: 1440px) {
+  .hero > div:nth-child(3) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* =========================
+   PANTALLAS MUY ALTAS
+========================= */
+
+@media (min-height: 900px) and (min-width: 768px) {
+  .hero-height {
+    min-height: 720px;
+  }
+}
+
+/* =========================
+   REDUCIR MOVIMIENTO
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero:hover .hero-image {
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
